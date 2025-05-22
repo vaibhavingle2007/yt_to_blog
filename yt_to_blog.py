@@ -17,12 +17,20 @@ client = OpenAI(
 
 def download_audio(video_url):
     output_file = f"audio_{uuid.uuid4().hex}.mp3"
-    command = [
-        "yt-dlp", "-x", "--audio-format", "mp3", video_url, "-o", output_file
+    
+    # Extract title
+    command_title = ["yt-dlp", "--get-title", video_url]
+    title_process = subprocess.run(command_title, capture_output=True, text=True, check=True)
+    video_title = title_process.stdout.strip()
+
+    # Download audio and thumbnail
+    command_download = [
+        "yt-dlp", "-x", "--audio-format", "mp3", "--write-thumbnail", video_url, "-o", output_file
     ]
     print(f"Downloading audio from: {video_url}")
-    subprocess.run(command, check=True)
-    return output_file
+    subprocess.run(command_download, check=True)
+    
+    return output_file, video_title
 
 def transcribe_audio(audio_path):
     print("Transcribing audio using Whisper...")
@@ -80,10 +88,12 @@ def main():
 
         mood = mood_map.get(mood_option, "professional")  # default to professional
 
-        audio_file = download_audio(video_url)
+        audio_file, video_title = download_audio(video_url)
         transcript = transcribe_audio(audio_file)
         blog_post = generate_blog(transcript, mood)
         save_blog(blog_post)
+        
+        print(f"Video Title: {video_title}") #printing title
 
     except Exception as e:
         print(f"Error: {str(e)}")
