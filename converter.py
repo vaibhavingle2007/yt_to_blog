@@ -69,35 +69,3 @@ Transcript:
             f.write(blog_text)
         print(f"Blog saved to: {filename}")
 
-def main():
-    try:
-        converter = YouTubeToBlogConverter()  # Instantiate the class
-
-        video_url = input("Enter YouTube Video URL: ").strip()
-
-        print("\nSelect a writing tone:")
-        print("1. Professional")
-        print("2. Casual")
-        print("3. Academic")
-        mood_option = input("Enter 1 / 2 / 3: ").strip()
-
-        mood_map = {
-            "1": "professional",
-            "2": "casual",
-            "3": "academic"
-        }
-
-        mood = mood_map.get(mood_option, "professional")  # default to professional
-
-        audio_file, video_title = converter.download_audio(video_url)
-        transcript = converter.transcribe_audio(audio_file)
-        blog_post = converter.generate_blog(transcript, mood)
-        converter.save_blog(blog_post)
-        
-        print(f"Video Title: {video_title}") #printing title
-
-    except Exception as e:
-        print(f"Error: {str(e)}")
-
-if __name__ == "__main__":
-    main()
