@@ -1,8 +1,3 @@
-Here’s a polished `README.md` tailored for your **YouTube-to-Blog Converter** project, styled like your example and ready to drop into your repo:
-
----
-
-```markdown
 # 📝 YouTube to Blog Converter
 
 [![Made with Python](https://img.shields.io/badge/Made%20with-Python-blue)](https://python.org)
