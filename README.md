@@ -146,13 +146,6 @@ Got ideas or want to help improve the app?
 3. Make your changes
 4. Open a pull request
 
----
-
-## 📄 License
-
-MIT License – See [LICENSE](LICENSE)
-
----
 
 <div align="center">
 
