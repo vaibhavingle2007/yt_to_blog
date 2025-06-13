@@ -161,9 +161,9 @@ MIT License – See [LICENSE](LICENSE)
 
 <div align="center">
 
-**Made with ❤️ for productivity lovers**
+**Made with ❤️ using [Bolt.new](https://bolt.new)**
 
-*Turning videos into words, one blog at a time* 📝
+*Improving accessibility, one gesture at a time* 🤟
 
-</div>
+</div> 
 ```
